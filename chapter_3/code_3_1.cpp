@@ -16,12 +16,12 @@ list<int> g_list;
 mutex g_mutex;
 
 void add_to_list(int value) {
-  lock_guard<mutex> guard(g_mutex);
+  lock_guard<mutex> lock(g_mutex);
   g_list.push_back(value);
 }
 
 bool list_contains(int value_to_find) {
-  lock_guard<mutex> guard(g_mutex);
+  lock_guard<mutex> lock(g_mutex);
   return find(g_list.begin(), g_list.end(), value_to_find) != g_list.end();
 }
 

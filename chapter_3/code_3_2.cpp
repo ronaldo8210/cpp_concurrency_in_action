@@ -12,7 +12,9 @@ using namespace std;
 
 class some_data {
  public:
-  do_something();
+  void do_something() {
+
+  }
  private:
   int a_;
   string str_;
@@ -22,12 +24,12 @@ class data_wrapper {
  public:
   template<typename Func>
   void process_data(Func func) {
-    lock_guard<mutex> guard(m_);
+    lock_guard<mutex> lock(m_);
     Func(data_);
   }
  private:
   some_data data_;
-  mutex m_
+  mutex m_;
 };
 
 some_data *unprotect_data_ptr;
